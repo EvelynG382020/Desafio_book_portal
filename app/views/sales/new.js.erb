@@ -1,0 +1,49 @@
+let timer = function(segundos){
+ let seconds = segundos
+ let interval = setInterval(delay,1000)
+
+ function delay(){
+  updateHTML(seconds);
+  if(seconds==0){
+    clearInterval(interval)
+    blockForm()  
+  } else {
+    seconds--
+  }
+ }
+}
+
+timer(120)
+$('#purchase_modal').modal('show')
+$('#modal_body').html("<%= j render( 'sales/form', sale: @sale, reservation:@reservation) %>")
+
+
+function updateHTML(seconds){
+  let minutes = Math.floor(seconds/60)
+  let remaining_seconds = seconds - minutes * 60
+  let template = document.getElementById('timer')
+  template.innerHTML = formatMins(minutes) + formatSecs(remaining_seconds)
+}
+
+function formatMins(minutes){
+  let str=''
+  str += ((minutes<10) ? "0" + minutes : minutes)
+  str += ":"
+  return str
+}
+
+function formatSecs(seconds){
+  let str=''
+  str += ((seconds<10) ? "0" + seconds : seconds)
+  return str
+}
+
+function blockForm(){
+  let inputs= document.getElementsByTagName('form')[0].elements
+  for(var input of inputs){
+  input.disabled = true
+  }
+}
+
+
+

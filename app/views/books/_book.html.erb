@@ -1,0 +1,13 @@
+ 
+      <tr>
+        <td><%= book.name %></td>
+        <td><%= book.author %></td>
+        <td><%= book.genre %></td>
+        <% if current_user %>
+          <td><%= link_to 'Reserve this book', reserve_book_path(book), method: :post, remote: true %></td>
+        <% end %>
+        <td><%= link_to 'Show', book %></td>
+        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  

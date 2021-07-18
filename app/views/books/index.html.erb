@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <h2 class="text-center">Books</h2>
+  
+  <%= link_to 'New Book', new_book_path %>
+  <br>
+  <table class="table mt-4">
+  <br>
+    <thead class="table table-dark">
+      <tr>
+        <th class="text-center">Name</th>
+        <th class="text-center">Author</th>
+        <th class="text-center">Genre</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @books %>
+      
+    </tbody>
+  </table>
+
+  <%= will_paginate @books %>
+  <br>
+</div>
+
